@@ -12,6 +12,10 @@ html, body {
     font-family: 'Raleway', sans-serif;
 }
 
+.wrapper {
+    max-width: 420px;
+}
+
 .chat {
     height: 100vh;
     display: flex;
