@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
-import { getUser } from "./cookie.js";
+import { getUser } from "./userCheck.js";
 
 const appSettings = {
     databaseURL: "https://chat-db5fc-default-rtdb.europe-west1.firebasedatabase.app/"
