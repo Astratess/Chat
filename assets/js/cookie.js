@@ -1,5 +1,9 @@
 export function getUser() {
-    return document.cookie.match(new RegExp('(^| )' + 'user' + '=([^;]+)'))[2];
+    const cookie = document.cookie.match(new RegExp('(^| )' + 'user' + '=([^;]+)'))[2];
+    
+    if (cookie != undefined) {
+        return cookie;
+    }
 }
 
 export function setUser(name) {
