@@ -6,7 +6,6 @@ const appSettings = {
     databaseURL: "https://chat-db5fc-default-rtdb.europe-west1.firebasedatabase.app/"
 }
 
-const user = getUser();
 const app = initializeApp(appSettings)
 const database = getDatabase(app)
 const chatRoom = ref(database, "chatRoom")
@@ -17,6 +16,7 @@ const chatBody = document.getElementById("chat__wrapper")
 
 addButton.addEventListener("click", function() {
     const messageValue = messageInput.value;
+    const user = getUser();
     
     if (messageValue != '') {
         push(chatRoom, { user: user , message: messageValue });
@@ -54,7 +54,7 @@ function appendItemToShoppingListEl(item) {
     const newEl = document.createElement("li")
     newEl.innerHTML = `<p>${message}</P>`
     
-    if (userCheck == user) {
+    if (userCheck == getUser()) {
         newEl.classList.add('current');
     } else {
         newEl.classList.add('not-current');

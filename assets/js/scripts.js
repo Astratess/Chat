@@ -1,2 +1,2 @@
-import './render.js';
 import './modal.js';
+import './render.js';
