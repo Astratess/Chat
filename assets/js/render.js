@@ -63,7 +63,7 @@ function appendItemToShoppingListEl(item) {
 
     setTimeout(() => {
         newEl.scrollIntoView(false);
-    }, 0)
+    }, 100)
 }
 
 /* Render when user added */
