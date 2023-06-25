@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    background-color: #111111;
+    overflow: hidden;
+    color: #fff;
+    font-size: 12px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.chat {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.chat__wrapper {
+    flex-grow: 1;
+    list-style-type: none;
+    overflow: auto;
+}
+
+.chat__wrapper li {
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 75%;
+    width: fit-content;
+}
+
+.chat__wrapper li + li {
+    margin-top: 10px;
+}
+
+.chat__wrapper .not-current {
+    background-color: #222222;
+}
+
+.chat__wrapper p {
+    width: fit-content;
+}
+
+.chat__wrapper .current {
+    margin-left: auto;
+    background-color: #333333;
+}
+
+.chat__inputs {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+#chat__btn {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    height: 20px;
+    display: block;
+}
+
+#chat__message {
+    font-size: 12px;
+    line-height: 24px;
+    color: #fff;
+    background-color: transparent;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    height: 24px;
+    width: 100%;
+    display: block;
+    flex-grow: 1;
+    padding: 10px;
+}
+
+/*-------- Modal --------*/
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background-color: #111111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    transition: opacity 400ms;
+}
+
+.modal.user-true {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal.user-true-loaded {
+    opacity: 0;
+    pointer-events: none;
+    transition: none;
+}
+
+.modal__inner {
+    width: 100%;
+}
+
+.modal__input {
+    display: block;
+    font-size: 14px;
+    line-height: 24px;
+    color: #fff;
+    background-color: transparent;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    height: 40px;
+    width: 100%;
+    display: block;
+    flex-grow: 1;
+    padding: 10px;
+    margin-bottom: 16px;
+}
+
+.modal__btn {
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
+    color: #fff;
+    background-color: transparent;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    margin-inline: auto;
+    padding: 10px 20px;
+}
