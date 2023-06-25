@@ -1,8 +1,8 @@
 export function getUser() {
-    const cookie = document.cookie.match(new RegExp('(^| )' + 'user' + '=([^;]+)'))[2];
+    const cookie = document.cookie.match(new RegExp('(^| )' + 'user' + '=([^;]+)'));
     
     if (cookie != undefined) {
-        return cookie;
+        return cookie[2];
     }
 }
 
