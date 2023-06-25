@@ -14,6 +14,10 @@ html, body {
     position: relative;
 }
 
+body:focus-within {
+    max-height: 53vh;
+}
+
 input {
     outline: none;
     box-shadow: none;
