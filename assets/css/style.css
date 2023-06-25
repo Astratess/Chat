@@ -9,10 +9,9 @@ html, body {
     color: #fff;
     font-size: 12px;
     font-family: 'Raleway', sans-serif;
-    overflow: hidden;
     max-height: 100vh;
     position: relative;
-    height: 200px;
+    height: 300px;
 }
 
 input {
@@ -25,7 +24,9 @@ input {
 }
 
 .chat {
-    max-height: 100vh;
+    overflow: hidden;
+    height: 100%;
+    position: relative;
 }
 
 .chat__head {
@@ -34,7 +35,7 @@ input {
     display: flex;
     align-items: center;
     gap: 20px;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     padding: 10px 20px 30px;
@@ -58,6 +59,7 @@ input {
 }
 
 .chat__wrapper {
+    max-height: 100%;
     padding: 70px 20px 70px;
     list-style-type: none;
     overflow: auto;
@@ -92,7 +94,7 @@ input {
 .chat__inputs {
     background: linear-gradient(to top, rgba(17, 17, 17, 1) calc(100% - 20px), rgba(11, 11, 11, 0) 100%);
     padding-block: 40px 10px;
-    position: fixed;
+    position: absolute;
     bottom: 0px;
     left: 0;
     width: 100%;
