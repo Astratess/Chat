@@ -1,4 +1,4 @@
-import { setUser, getUser } from "./userCheck.js";
+import { setUser, getUser } from "./cookie.js";
 
 const modal = document.querySelector('.modal')
 const nameInput = document.querySelector('.modal__input');

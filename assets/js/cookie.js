@@ -1,16 +1,6 @@
-// export function getUser() {
-//     return localStorage.getItem("user");
-// }
-
-// export function setUser(name) {
-//     localStorage.setItem("user", name);
-// }
-
 export function getUser() {
     const cookie = document.cookie.match(new RegExp('(^| )' + 'user' + '=([^;]+)'));
     
-    console.log(cookie);
-
     if (cookie != undefined) {
         return cookie[2];
     }

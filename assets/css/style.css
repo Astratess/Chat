@@ -26,6 +26,10 @@ input {
 }
 
 .chat {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -33,6 +37,9 @@ input {
 }
 
 .chat__wrapper {
+    margin-inline: auto;
+    max-width: 600px;
+    width: 100%;
     flex-grow: 0 1 100%;
     list-style-type: none;
     overflow: auto;
@@ -72,15 +79,22 @@ input {
 
 .chat__inputs {
     background-color: #111111;
-    display: flex;
-    align-items: center;
-    gap: 16px;
     padding-top: 20px;
     position: fixed;
     bottom: 20px;
-    left: 0;
     width: 100%;
     padding-inline: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.chat__actions {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
 }
 
 #chat__btn {
