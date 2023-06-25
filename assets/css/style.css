@@ -11,7 +11,8 @@ html, body {
     font-family: 'Raleway', sans-serif;
     max-height: 100vh;
     position: relative;
-    height: 500px;
+    height: 500px !important;
+    overflow: hidden;
 }
 
 input {
