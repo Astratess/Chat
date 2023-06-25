@@ -12,10 +12,7 @@ html, body {
     overflow: hidden;
     max-height: 100vh;
     position: relative;
-}
-
-body:focus-within {
-    max-height: 53vh;
+    height: 100%;
 }
 
 input {
