@@ -24,7 +24,7 @@ html, body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 20px 20px 64px;
 }
 
 .chat__wrapper {
@@ -70,6 +70,11 @@ html, body {
     align-items: center;
     gap: 16px;
     padding-top: 20px;
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    padding-inline: 20px;
 }
 
 #chat__btn {
