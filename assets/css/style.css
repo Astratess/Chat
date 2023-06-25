@@ -24,6 +24,8 @@ input {
 
 .chat {
     max-height: 100vh;
+    position: fixed;
+    top: 0;
 }
 
 .chat__head {
