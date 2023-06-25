@@ -61,3 +61,9 @@ function appendItemToShoppingListEl(item) {
     }
     chatBody.append(newEl)
 }
+
+const nameButton = document.querySelector('.modal__btn');
+
+nameButton.addEventListener('click', ()=> {
+    appendItemToShoppingListEl();
+});
