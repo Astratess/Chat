@@ -71,6 +71,7 @@ input {
 }
 
 .chat__inputs {
+    background-color: #111111;
     display: flex;
     align-items: center;
     gap: 16px;
