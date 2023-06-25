@@ -20,5 +20,5 @@ export function setUser(name) {
 
 	const expires = "expires=" + d.toUTCString();
 
-    document.cookie = `user=${name}` + expires;
+    document.cookie = `user=${name} ` + expires;
 }
