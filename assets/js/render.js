@@ -59,8 +59,14 @@ function appendItemToShoppingListEl(item) {
     } else {
         newEl.classList.add('not-current');
     }
-    chatBody.append(newEl)
+    chatBody.append(newEl);
+
+    setTimeout(() => {
+        newEl.scrollIntoView(false);
+    }, 0)
 }
+
+/* Render when user added */
 
 const nameButton = document.querySelector('.modal__btn');
 

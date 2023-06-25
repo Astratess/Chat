@@ -37,6 +37,7 @@ html, body {
     mask-size: 100% 100%;
     -webkit-mask-size: 100% 100%;
     padding-block: 10px;
+    scroll-behavior: smooth;
 }
 
 .chat__wrapper li {
@@ -44,6 +45,7 @@ html, body {
     border-radius: 10px;
     max-width: 75%;
     width: fit-content;
+    scroll-margin-bottom: 20px;
 }
 
 .chat__wrapper li + li {
