@@ -2,6 +2,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
 import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 import { getUser } from "./cookie.js";
 
+let lastUser;
+
 const appSettings = {
     databaseURL: "https://chat-db5fc-default-rtdb.europe-west1.firebasedatabase.app/"
 }
@@ -51,14 +53,20 @@ function appendItemToShoppingListEl(item) {
     const userCheck = item[1].user;
     const message = item[1].message;
     
-    const newEl = document.createElement("li")
-    newEl.innerHTML = `<p>${message}</P>`
+    const newEl = document.createElement("li");
+    newEl.innerHTML = `<p>${message}</p>`;
     
+    if(userCheck != lastUser) {
+        newEl.dataset.user = `${userCheck}`;
+        lastUser = userCheck;
+    }
+
     if (userCheck == getUser()) {
         newEl.classList.add('current');
     } else {
         newEl.classList.add('not-current');
     }
+
     chatBody.append(newEl);
 
     setTimeout(() => {
