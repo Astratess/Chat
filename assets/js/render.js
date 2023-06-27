@@ -13,8 +13,18 @@ const database = getDatabase(app)
 const chatRoom = ref(database, "chatRoom")
 
 const messageInput = document.getElementById("chat__message")
+const messageInputReal = document.getElementById("chat__message-real")
 const addButton = document.getElementById("chat__btn")
 const chatBody = document.getElementById("chat__wrapper")
+
+messageInputReal.addEventListener('input', function() {
+    messageInput.value = messageInputReal.value;
+});
+
+messageInput.parentNode.addEventListener('click', function() {
+    messageInputReal.focus();
+    console.log('clicked')
+});
 
 addButton.addEventListener("click", function() {
     const messageValue = messageInput.value;
@@ -46,6 +56,7 @@ function clearChatBody() {
 }
 
 function clearMessageField() {
+    messageInputReal.value = "";
     messageInput.value = "";
 }
 
@@ -61,7 +72,7 @@ function appendItemToShoppingListEl(item) {
         if (userCheck != currentUser) {
             newEl.dataset.user = `${userCheck}`;
         }
-        
+
         lastUser = userCheck;
     }
 

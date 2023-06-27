@@ -134,6 +134,18 @@ input {
     display: block;
 }
 
+.chat__message {
+    flex-grow: 1;
+    position: relative;
+}
+
+.chat__message:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+}
+
 #chat__message {
     font-size: 12px;
     line-height: 24px;
@@ -144,8 +156,16 @@ input {
     height: 24px;
     width: 100%;
     display: block;
-    flex-grow: 1;
     padding: 10px;
+    pointer-events: none;
+}
+
+#chat__message-real {
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
 }
 
 /*-------- Modal --------*/
