@@ -52,16 +52,20 @@ function clearMessageField() {
 function appendItemToShoppingListEl(item) {
     const userCheck = item[1].user;
     const message = item[1].message;
+    const currentUser = getUser();
     
     const newEl = document.createElement("li");
     newEl.innerHTML = `<p>${message}</p>`;
     
     if(userCheck != lastUser) {
-        newEl.dataset.user = `${userCheck}`;
+        if (userCheck != currentUser) {
+            newEl.dataset.user = `${userCheck}`;
+        }
+        
         lastUser = userCheck;
     }
 
-    if (userCheck == getUser()) {
+    if (userCheck == currentUser) {
         newEl.classList.add('current');
     } else {
         newEl.classList.add('not-current');
