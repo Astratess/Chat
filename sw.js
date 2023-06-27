@@ -17,6 +17,9 @@ if ("serviceWorker" in navigator) {
 let coreAssets = [
   '/assets/css/style.css',
   '/assets/js/scripts.js',
+  '/assets/js/cookie.js',
+  '/assets/js/modal.js',
+  '/assets/js/render.js',
   '/assets/images/hexanect-logo.svg'
 ];
 
