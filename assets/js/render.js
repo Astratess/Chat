@@ -17,14 +17,13 @@ const messageInputReal = document.getElementById("chat__message-real")
 const addButton = document.getElementById("chat__btn")
 const chatBody = document.getElementById("chat__wrapper")
 
-messageInputReal.addEventListener('input', function() {
-    messageInput.value = messageInputReal.value;
-});
+// messageInputReal.addEventListener('input', function() {
+//     messageInput.value = messageInputReal.value;
+// });
 
-messageInput.parentNode.addEventListener('click', function() {
-    messageInputReal.focus();
-    console.log('clicked')
-});
+// messageInput.parentNode.addEventListener('click', function() {
+//     messageInputReal.focus();
+// });
 
 addButton.addEventListener("click", function() {
     const messageValue = messageInput.value;
