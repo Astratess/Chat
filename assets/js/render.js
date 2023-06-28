@@ -1,8 +1,9 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 import { getUser } from "./cookie.js";
 
 let lastUser;
+let initialized = false;
 
 const appSettings = {
     databaseURL: "https://chat-db5fc-default-rtdb.europe-west1.firebasedatabase.app/"
@@ -17,14 +18,6 @@ const messageInputReal = document.getElementById("chat__message-real")
 const addButton = document.getElementById("chat__btn")
 const chatBody = document.getElementById("chat__wrapper")
 
-// messageInputReal.addEventListener('input', function() {
-//     messageInput.value = messageInputReal.value;
-// });
-
-// messageInput.parentNode.addEventListener('click', function() {
-//     messageInputReal.focus();
-// });
-
 addButton.addEventListener("click", function() {
     const messageValue = messageInput.value;
     const user = getUser();
@@ -38,13 +31,21 @@ addButton.addEventListener("click", function() {
 
 onValue(chatRoom, function(snapshot) {
     if (snapshot.exists()) {
-        const messages = Object.entries(snapshot.val())
-    
+        const messages = Object.entries(snapshot.val());
+        const lastMessage = messages[messages.length-1];
+
         clearChatBody()
         
         for (const message of messages) {
             appendItemToShoppingListEl(message);
-        }    
+        }
+
+        if (initialized) {
+            notify(lastMessage);
+        } else {
+            initialized = true;
+        }
+        
     } else {
         chatBody.innerHTML = "";
     }
@@ -61,12 +62,17 @@ function clearMessageField() {
 
 function appendItemToShoppingListEl(item) {
     const userCheck = item[1].user;
-    const message = item[1].message;
+    let message = item[1].message;
     const currentUser = getUser();
+    const messageHasLink = message.includes('http') || message.includes('https');
     
+    if (messageHasLink) {
+        message = handleLinks(message);
+    }
+
     const newEl = document.createElement("li");
     newEl.innerHTML = `<p>${message}</p>`;
-    
+
     if(userCheck != lastUser) {
         if (userCheck != currentUser) {
             newEl.dataset.user = `${userCheck}`;
@@ -75,11 +81,7 @@ function appendItemToShoppingListEl(item) {
         lastUser = userCheck;
     }
 
-    if (userCheck == currentUser) {
-        newEl.classList.add('current');
-    } else {
-        newEl.classList.add('not-current');
-    }
+    userCheck == currentUser ? newEl.classList.add('current') :  newEl.classList.add('not-current');
 
     chatBody.append(newEl);
 
@@ -95,3 +97,29 @@ const nameButton = document.querySelector('.modal__btn');
 nameButton.addEventListener('click', ()=> {
     appendItemToShoppingListEl();
 });
+
+/* --------- Handle links in messages --------- */
+
+function handleLinks(item) {
+    const messageWords = item.split(" ");
+    const refactoredMessage = [];
+    
+    for (let word of messageWords) {
+        word.includes('http') || word.includes('https') ? refactoredMessage.push(`<a href='${word}'>${word}</a>`) : refactoredMessage.push(word);
+    }
+
+    return refactoredMessage.join(' ');
+}
+
+/* ------- Notification ------- */
+
+function notify(item) {
+    Notification.requestPermission().then(perm => {
+        if (perm == 'granted') {
+            new Notification(`${item[1].user}`, {
+                icon: "/assets/images/hexanect-logo.svg",
+                body: `${item[1].message}`,
+            });
+        }
+    });
+}
